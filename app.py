@@ -18,6 +18,9 @@ def index():
     ''' Endpoint to query from google, ddg and twitter '''
     term = flask.request.args.get('q')
 
+    if term is None:
+        return 'You need to query something'
+
     # twitter
     auth = requests_oauthlib.OAuth1(
         app.config.get('CONSUMER_API_KEY'),
